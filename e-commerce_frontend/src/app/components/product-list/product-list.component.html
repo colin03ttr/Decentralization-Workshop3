@@ -1,6 +1,28 @@
 <div class="container">
     <h2>Products</h2>
-    <div class="row">
+    
+    <!-- Form to add a new product -->
+    <form (ngSubmit)="addProduct()">
+        <div class="form-group">
+            <label for="productName">Product Name</label>
+            <input type="text" class="form-control" id="productName" [(ngModel)]="newProduct.name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="productDescription">Product Description</label>
+            <input type="text" class="form-control" id="productDescription" [(ngModel)]="newProduct.description" name="description" required>
+        </div>
+        <div class="form-group">
+            <label for="productPrice">Product Price</label>
+            <input type="number" class="form-control" id="productPrice" [(ngModel)]="newProduct.price" name="price" required>
+        </div>
+        <div class="form-group">
+            <label for="stock">Stock</label>
+            <input type="number" class="form-control" id="productStock" [(ngModel)]="newProduct.stock" name="stock" required>
+        </div>
+        <button type="submit" class="btn btn-success">Add Product</button>
+    </form>
+    
+    <div class="row mt-4">
       <div *ngFor="let product of products" class="col-md-4">
         <div class="card p-2 m-2">
           <h5>{{ product.name }}</h5>
@@ -11,4 +33,3 @@
       </div>
     </div>
 </div>
-  

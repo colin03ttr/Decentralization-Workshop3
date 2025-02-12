@@ -14,6 +14,14 @@ export class ApiService {
     return this.http.get(`${this.API_URL}/products`);
   }
 
+  getProduct(id: number): Observable<any> {
+    return this.http.get(`${this.API_URL}/products/${id}`);
+  }
+
+  addProduct(product: {name: string,description: string, price: Number, stock: Number}): Observable<any> {
+    return this.http.post(`${this.API_URL}/products`, product);
+  }
+
   addToCart(userId: number, productId: number, quantity: number): Observable<any> {
     return this.http.post(`${this.API_URL}/cart/${userId}`, { product_id: productId, quantity });
   }
@@ -24,5 +32,9 @@ export class ApiService {
 
   placeOrder(userId: number, total: number): Observable<any> {
     return this.http.post(`${this.API_URL}/orders`, { user_id: userId, total });
+  }
+
+  loadOrders(user_id: number): Observable<any> {
+    return this.http.get(`${this.API_URL}/orders/${user_id}`);
   }
 }
